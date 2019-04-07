@@ -12,9 +12,7 @@ If you have the latest version of [Advanced Custom Fields Pro](https://www.advan
 
 Because I'm bundled with Gulp, basic knowledge of the command line and the following dependencies are required: either [Yarn](https://yarnpkg.com) or [Node](https://nodejs.org), [Gulp CLI](https://github.com/gulpjs/gulp-cli) (`npm install -g gulp-cli`), and [Bower](https://bower.io/) (`npm install -g bower`).
 
-### Advanced
-
-If you want to set me up manually:
+### Setup
 
 1. [Download](https://github.com/WebDevStudios/wd_s/archive/master.zip) and extract the zip into your `wp-content/themes` directory and rename `back_to_front_starter-master` to fit your needs.
 
@@ -54,8 +52,6 @@ NPM
 ```bash
 npm install && bower install
 ```
-
-![Install and Gulp](https://dl.dropboxusercontent.com/s/cj1p6xjz51cpckq/back_to_front_starter-install.gif?dl=0)
 
 ### Gulp Tasks
 
