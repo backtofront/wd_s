@@ -24,7 +24,7 @@ If you want to set me up manually:
 
 2. Find & Replace
 
-You'll need to change all instances of the names: `_s`.
+You'll need to change all instances of the names: `back_to_front_starter`.
 
 - Search for: `'back_to_front_starter'` and replace with: `'project-name'` (inside single quotations) to capture the text domain
 - Search for: `back_to_front_starter_` and replace with: `project-name_` to capture all the function names
@@ -82,7 +82,3 @@ From the command line, type any of the following to perform an action:
 `gulp styles` - Compile, prefix, combine media queries, and minify CSS files.
 
 `gulp` - Runs the following tasks at the same time: i18n, icons, scripts, styles, sprites.
-
-## Contributing and Support
-
-Your contributions and [support tickets](https://github.com/WebDevStudios/wd_s/issues) are welcome. Please see our [guidelines](https://github.com/WebDevStudios/wd_s/blob/master/.github/CONTRIBUTING.md) before submitting a pull request.
