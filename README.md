@@ -20,7 +20,7 @@ If you want to keep it simple, head over to [https://wdunderscores.com](https://
 
 If you want to set me up manually:
 
-1. [Download](https://github.com/WebDevStudios/wd_s/archive/master.zip) and extract the zip into your `wp-content/themes` directory and rename `wdback_to_front_starter-master` to fit your needs.
+1. [Download](https://github.com/WebDevStudios/wd_s/archive/master.zip) and extract the zip into your `wp-content/themes` directory and rename `back_to_front_starter-master` to fit your needs.
 
 2. Find & Replace
 
@@ -59,7 +59,7 @@ NPM
 npm install && bower install
 ```
 
-![Install and Gulp](https://dl.dropboxusercontent.com/s/cj1p6xjz51cpckq/wdback_to_front_starter-install.gif?dl=0)
+![Install and Gulp](https://dl.dropboxusercontent.com/s/cj1p6xjz51cpckq/back_to_front_starter-install.gif?dl=0)
 
 ### Gulp Tasks
 
