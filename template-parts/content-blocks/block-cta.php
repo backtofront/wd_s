@@ -2,7 +2,7 @@
 /**
  * The template used for displaying a CTA block.
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 // Set up fields.
@@ -10,14 +10,14 @@ $block_title = get_sub_field( 'title' );
 $text        = get_sub_field( 'text' );
 
 // Start a <container> with possible block options.
-_s_display_block_options(
+back_to_front_starter_display_block_options(
 	array(
 		'container' => 'aside', // Any HTML5 container: section, div, etc...
 		'class'     => 'content-block cta-block', // Container class.
 	)
 );
 ?>
-	<div class="container display-flex align-center<?php echo esc_attr( _s_get_animation_class() ); ?>">
+	<div class="container display-flex align-center<?php echo esc_attr( back_to_front_starter_get_animation_class() ); ?>">
 		<header>
 			<?php if ( $block_title ) : ?>
 				<h1 class="cta-title"><?php echo esc_html( $block_title ); ?></h1>
@@ -29,7 +29,7 @@ _s_display_block_options(
 		</header>
 
 		<?php
-		_s_display_link(
+		back_to_front_starter_display_link(
 			array(
 				'button' => true,
 				'class'  => 'button-cta',

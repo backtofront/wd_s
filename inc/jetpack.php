@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 /**
@@ -15,13 +15,13 @@
  *
  * @author WDS
  */
-function _s_jetpack_setup() {
+function back_to_front_starter_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => '_s_infinite_scroll_render',
+			'render'    => 'back_to_front_starter_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
@@ -29,14 +29,14 @@ function _s_jetpack_setup() {
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
 }
-add_action( 'after_setup_theme', '_s_jetpack_setup' );
+add_action( 'after_setup_theme', 'back_to_front_starter_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  *
  * @author WDS
  */
-function _s_infinite_scroll_render() {
+function back_to_front_starter_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

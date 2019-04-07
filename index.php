@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 get_header(); ?>
@@ -41,7 +41,7 @@ get_header(); ?>
 
 			endwhile;
 
-			_s_display_numeric_pagination();
+			back_to_front_starter_display_numeric_pagination();
 
 		else :
 

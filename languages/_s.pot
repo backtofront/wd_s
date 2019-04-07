@@ -1,8 +1,8 @@
-# Copyright (C) 2019 _s
-# This file is distributed under the same license as the _s package.
+# Copyright (C) 2019 Back to Front Starter
+# This file is distributed under the same license as the Back to Front Starter package.
 msgid ""
 msgstr ""
-"Project-Id-Version: _s\n"
+"Project-Id-Version: Back to Front Starter\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

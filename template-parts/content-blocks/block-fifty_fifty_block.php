@@ -2,7 +2,7 @@
 /**
  * The template used for displaying fifty/fifty blocks.
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 // Get the block layout field so block template is conditionally loaded.

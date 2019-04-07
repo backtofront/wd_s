@@ -6,7 +6,7 @@
  * from a specific category. The amount of posts can be
  * limited through the admin.
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 // Set up fields.
@@ -20,20 +20,20 @@ $args = array();
 
 // Only if there are either categories or tags.
 if ( $categories || $tags ) {
-	$args = _s_get_recent_posts_query_arguments( $categories, $tags );
+	$args = back_to_front_starter_get_recent_posts_query_arguments( $categories, $tags );
 }
 
 // Always merge in the number of posts.
 $args['posts_per_page'] = is_numeric( $post_count ) ? $post_count : 3;
 
 // Get the recent posts.
-$recent_posts = _s_get_recent_posts( $args );
+$recent_posts = back_to_front_starter_get_recent_posts( $args );
 
 // Display section if we have any posts.
 if ( $recent_posts->have_posts() ) :
 
 	// Start a <container> with possible block options.
-	_s_display_block_options(
+	back_to_front_starter_display_block_options(
 		array(
 			'container' => 'section', // Any HTML5 container: section, div, etc...
 			'class'     => 'content-block recent-posts-block', // Container class.
@@ -47,7 +47,7 @@ if ( $recent_posts->have_posts() ) :
 			<?php endif; ?>
 		</div>
 
-		<div class="container display-flex<?php echo esc_attr( _s_get_animation_class() ); ?>">
+		<div class="container display-flex<?php echo esc_attr( back_to_front_starter_get_animation_class() ); ?>">
 
 			<?php
 			// Loop through recent posts.
@@ -55,11 +55,11 @@ if ( $recent_posts->have_posts() ) :
 				$recent_posts->the_post();
 
 				// Display a card.
-				_s_display_card(
+				back_to_front_starter_display_card(
 					array(
 						'title' => get_the_title(),
-						'image' => _s_get_post_image_url( 'medium' ),
-						'text'  => _s_get_the_excerpt(
+						'image' => back_to_front_starter_get_post_image_url( 'medium' ),
+						'text'  => back_to_front_starter_get_the_excerpt(
 							array(
 								'length' => 20,
 								'more'   => '...',

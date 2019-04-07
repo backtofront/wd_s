@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 ?>
@@ -20,7 +20,7 @@
 			if ( 'post' === get_post_type() ) :
 			?>
 			<div class="entry-meta">
-				<?php _s_posted_on(); ?>
+				<?php back_to_front_starter_posted_on(); ?>
 			</div><!-- .entry-meta -->
 			<?php endif; ?>
 		</header><!-- .entry-header -->
@@ -31,7 +31,7 @@
 					sprintf(
 						wp_kses(
 							/* translators: %s: Name of current post. */
-							__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', '_s' ),
+							__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'back_to_front_starter' ),
 							array(
 								'span' => array(
 									'class' => array(),
@@ -44,7 +44,7 @@
 
 				wp_link_pages(
 					array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'back_to_front_starter' ),
 						'after'  => '</div>',
 					)
 				);
@@ -52,6 +52,6 @@
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
-			<?php _s_entry_footer(); ?>
+			<?php back_to_front_starter_entry_footer(); ?>
 		</footer><!-- .entry-footer -->
 	</article><!-- #post-## -->

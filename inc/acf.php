@@ -4,7 +4,7 @@
  *
  * A place to custom functionality related to Advanced Custom Fields.
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 // If ACF isn't activated, then bail.
@@ -17,7 +17,7 @@ if ( ! class_exists( 'acf' ) ) {
  *
  * @author WDS
  */
-function _s_display_content_blocks() {
+function back_to_front_starter_display_content_blocks() {
 	if ( have_rows( 'content_blocks' ) ) :
 		while ( have_rows( 'content_blocks' ) ) :
 			the_row();
@@ -26,7 +26,7 @@ function _s_display_content_blocks() {
 			$other_options = get_sub_field( 'other_options' ) ? get_sub_field( 'other_options' ) : get_field( 'other_options' )['other_options'];
 
 			// If the block has expired,then bail!
-			if ( _s_has_block_expired(
+			if ( back_to_front_starter_has_block_expired(
 				array(
 					'start_date' => $other_options['start_date'],
 					'end_date'   => $other_options['end_date'],
@@ -47,7 +47,7 @@ function _s_display_content_blocks() {
  * @author WDS
  * @param  array $args Possible arguments.
  */
-function _s_display_block_options( $args = array() ) {
+function back_to_front_starter_display_block_options( $args = array() ) {
 
 	// Get block background options.
 	$background_options = get_sub_field( 'background_options' ) ? get_sub_field( 'background_options' ) : get_field( 'background_options' )['background_options'];
@@ -76,7 +76,7 @@ function _s_display_block_options( $args = array() ) {
 	$background_video_markup = $background_image_markup = '';
 
 	// Show overlay class, if it exists.
-	$has_show_overlay = _s_has_array_key( 'show_overlay', $background_options ) && true === $background_options['show_overlay'] ? ' has-overlay' : '';
+	$has_show_overlay = back_to_front_starter_has_array_key( 'show_overlay', $background_options ) && true === $background_options['show_overlay'] ? ' has-overlay' : '';
 
 	// Only try to get the rest of the settings if the background type is set to anything.
 	if ( $args['background_type'] ) {
@@ -105,7 +105,7 @@ function _s_display_block_options( $args = array() ) {
 			$background_title      = $background_options['background_video_title'];
 			$args['class']        .= ' has-background video-as-background' . esc_attr( $has_show_overlay );
 			// Translators: get the title of the video.
-			$background_alt = $background_title ? sprintf( esc_attr( 'Video Background of %s', '_s' ), esc_attr( $background_options['background_video_title'] ) ) : __( 'Video Background', '_s' );
+			$background_alt = $background_title ? sprintf( esc_attr( 'Video Background of %s', 'back_to_front_starter' ), esc_attr( $background_options['background_video_title'] ) ) : __( 'Video Background', 'back_to_front_starter' );
 
 			ob_start();
 			?>
@@ -118,7 +118,7 @@ function _s_display_block_options( $args = array() ) {
 						<source src="<?php echo esc_url( $background_video['url'] ); ?>" type="video/mp4">
 						<?php endif; ?>
 				</video>
-				<button class="video-toggle"><span class="screen-reader-text"><?php esc_html_e( 'Toggle video playback', '_s' ); ?></span></button>
+				<button class="video-toggle"><span class="screen-reader-text"><?php esc_html_e( 'Toggle video playback', 'back_to_front_starter' ); ?></span></button>
 			<?php
 			$background_video_markup = ob_get_clean();
 		}
@@ -174,7 +174,7 @@ function _s_display_block_options( $args = array() ) {
  * @param array $args display options array.
  * @return string $classes Animate.css classes for our element.
  */
-function _s_get_animation_class( $args = array() ) {
+function back_to_front_starter_get_animation_class( $args = array() ) {
 
 	// Defaults.
 	$defaults = array(
@@ -195,7 +195,7 @@ function _s_get_animation_class( $args = array() ) {
 	$classes = ' not-animated';
 
 	// If we have an animation set...
-	if ( _s_has_array_key( 'animation', $display_options ) ) {
+	if ( back_to_front_starter_has_array_key( 'animation', $display_options ) ) {
 		$classes = ' animated ' . $display_options['animation'];
 	} elseif ( is_string( $display_options ) && ! empty( $display_options ) ) {
 		$classes = ' animated ' . $display_options;
@@ -212,7 +212,7 @@ function _s_get_animation_class( $args = array() ) {
  *
  * @return bool
  */
-function _s_has_block_expired( $args = array() ) {
+function back_to_front_starter_has_block_expired( $args = array() ) {
 
 	// Setup defaults.
 	$defaults = array(
@@ -255,7 +255,7 @@ function _s_has_block_expired( $args = array() ) {
  *
  * @return string new ACF title.
  */
-function _s_acf_flexible_content_layout_title( $block_title, $field, $layout, $i ) {
+function back_to_front_starter_acf_flexible_content_layout_title( $block_title, $field, $layout, $i ) {
 
 	// Current ACF field name.
 	$current_title = $block_title;
@@ -277,7 +277,7 @@ function _s_acf_flexible_content_layout_title( $block_title, $field, $layout, $i
 		$background_repeater = get_sub_field( 'carousel_slides' )[0]['background_options']['background_type']['value'];
 		$background_type     = $background ? $background : $background_repeater;
 
-		$type = _s_return_flexible_content_layout_value( $background_type );
+		$type = back_to_front_starter_return_flexible_content_layout_value( $background_type );
 
 		// Load image from non-repeater sub field background image, if it exists else Load image from repeater sub field background image, if it exists — Hero.
 		if ( 'image' === $background_type ) {
@@ -285,7 +285,7 @@ function _s_acf_flexible_content_layout_title( $block_title, $field, $layout, $i
 		}
 
 		if ( 'video' === $background_type ) {
-			$block_heading .= '<div style="font-size: 30px; height: 26px; width: 30px;" class="dashicons dashicons-format-video acf-flexible-title-image"><span class="screen-reader-text">' . esc_html__( 'Video', '_s' ) . '</span></div>';
+			$block_heading .= '<div style="font-size: 30px; height: 26px; width: 30px;" class="dashicons dashicons-format-video acf-flexible-title-image"><span class="screen-reader-text">' . esc_html__( 'Video', 'back_to_front_starter' ) . '</span></div>';
 		}
 	}
 
@@ -300,14 +300,14 @@ function _s_acf_flexible_content_layout_title( $block_title, $field, $layout, $i
 	$end_date    = $other_options['end_date'];
 
 	// If the block has expired, add "(expired)" to the title.
-	if ( _s_has_block_expired(
+	if ( back_to_front_starter_has_block_expired(
 			array(
 				'start_date' => $start_date,
 				'end_date'   => $end_date,
 			)
 		)
 	) {
-		$expired .= '<span style="color: red;">&nbsp;(' . esc_html__( 'expired', '_s' ) . ')</span>';
+		$expired .= '<span style="color: red;">&nbsp;(' . esc_html__( 'expired', 'back_to_front_starter' ) . ')</span>';
 	}
 
 	// Load title field text else Load headline text — Hero.
@@ -318,7 +318,7 @@ function _s_acf_flexible_content_layout_title( $block_title, $field, $layout, $i
 	// Return New Title.
 	return $block_heading . $expired;
 }
-add_filter( 'acf/fields/flexible_content/layout_title/name=content_blocks', '_s_acf_flexible_content_layout_title', 10, 4 );
+add_filter( 'acf/fields/flexible_content/layout_title/name=content_blocks', 'back_to_front_starter_acf_flexible_content_layout_title', 10, 4 );
 
 /**
  * Return flexible content field value by type
@@ -327,7 +327,7 @@ add_filter( 'acf/fields/flexible_content/layout_title/name=content_blocks', '_s_
  * @author WDS
  * @return string field value.
  */
-function _s_return_flexible_content_layout_value( $type ) {
+function back_to_front_starter_return_flexible_content_layout_value( $type ) {
 
 	if ( empty( $type ) ) {
 		return;
@@ -339,14 +339,14 @@ function _s_return_flexible_content_layout_value( $type ) {
 	return $background_type ? $background_type : $background_type_repeater;
 }
 
-if ( function_exists( '_s_acf_flexible_content_layout_title' ) ) {
+if ( function_exists( 'back_to_front_starter_acf_flexible_content_layout_title' ) ) {
 
 	/**
-	 * Set Admin Styles for Flexible Content Layout Image/Title in _s_acf_flexible_content_layout_title().
+	 * Set Admin Styles for Flexible Content Layout Image/Title in back_to_front_starter_acf_flexible_content_layout_title().
 	 *
 	 * @author WDS
 	 */
-	function _s_flexible_content_layout_title_acf_admin_head() {
+	function back_to_front_starter_flexible_content_layout_title_acf_admin_head() {
 	?>
 	<style type="text/css">
 		.acf-flexible-content .layout .acf-fc-layout-handle {
@@ -366,11 +366,11 @@ if ( function_exists( '_s_acf_flexible_content_layout_title' ) ) {
 	</style>
 	<?php
 	}
-	add_action( 'acf/input/admin_head', '_s_flexible_content_layout_title_acf_admin_head' );
+	add_action( 'acf/input/admin_head', 'back_to_front_starter_flexible_content_layout_title_acf_admin_head' );
 }
 
 /**
- * Load colors dynamically into select field from _s_get_theme_colors()
+ * Load colors dynamically into select field from back_to_front_starter_get_theme_colors()
  *
  * @author WDS
  * @param array $field field options.
@@ -378,13 +378,13 @@ if ( function_exists( '_s_acf_flexible_content_layout_title' ) ) {
  *
  * @author Corey Colins <corey@webdevstudios.com>
  */
-function _s_acf_load_color_picker_field_choices( $field ) {
+function back_to_front_starter_acf_load_color_picker_field_choices( $field ) {
 
 	// Reset choices.
 	$field['choices'] = array();
 
 	// Grab our colors array.
-	$colors = _s_get_theme_colors();
+	$colors = back_to_front_starter_get_theme_colors();
 
 	// Loop through colors.
 	foreach ( $colors as $key => $color ) {
@@ -399,7 +399,7 @@ function _s_acf_load_color_picker_field_choices( $field ) {
 	// Return the field.
 	return $field;
 }
-add_filter( 'acf/load_field/name=color_picker', '_s_acf_load_color_picker_field_choices' );
+add_filter( 'acf/load_field/name=color_picker', 'back_to_front_starter_acf_load_color_picker_field_choices' );
 
 /**
  * Get the theme colors for this project. Set these first in the Sass partial then migrate them over here.
@@ -408,22 +408,22 @@ add_filter( 'acf/load_field/name=color_picker', '_s_acf_load_color_picker_field_
  * @return array The array of our color names and hex values.
  * @author Corey Collins
  */
-function _s_get_theme_colors() {
+function back_to_front_starter_get_theme_colors() {
 	return array(
-		esc_html__( 'Alto', '_s' )           => '#ddd',
-		esc_html__( 'Black', '_s' )          => '#000',
-		esc_html__( 'Blue', '_s' )           => '#21759b',
-		esc_html__( 'Cod Gray', '_s' )       => '#111',
-		esc_html__( 'Dove Gray', '_s' )      => '#666',
-		esc_html__( 'Gallery', '_s' )        => '#eee',
-		esc_html__( 'Gray', '_s' )           => '#808080',
-		esc_html__( 'Gray Alt', '_s' )       => '#929292',
-		esc_html__( 'Light Yellow', '_s' )   => '#fff9c0',
-		esc_html__( 'Mineshaft', '_s' )      => '#333',
-		esc_html__( 'Silver', '_s' )         => '#ccc',
-		esc_html__( 'Silver Chalice', '_s' ) => '#aaa',
-		esc_html__( 'White', '_s' )          => '#fff',
-		esc_html__( 'Whitesmoke', '_s' )     => '#f1f1f1',
+		esc_html__( 'Alto', 'back_to_front_starter' )           => '#ddd',
+		esc_html__( 'Black', 'back_to_front_starter' )          => '#000',
+		esc_html__( 'Blue', 'back_to_front_starter' )           => '#21759b',
+		esc_html__( 'Cod Gray', 'back_to_front_starter' )       => '#111',
+		esc_html__( 'Dove Gray', 'back_to_front_starter' )      => '#666',
+		esc_html__( 'Gallery', 'back_to_front_starter' )        => '#eee',
+		esc_html__( 'Gray', 'back_to_front_starter' )           => '#808080',
+		esc_html__( 'Gray Alt', 'back_to_front_starter' )       => '#929292',
+		esc_html__( 'Light Yellow', 'back_to_front_starter' )   => '#fff9c0',
+		esc_html__( 'Mineshaft', 'back_to_front_starter' )      => '#333',
+		esc_html__( 'Silver', 'back_to_front_starter' )         => '#ccc',
+		esc_html__( 'Silver Chalice', 'back_to_front_starter' ) => '#aaa',
+		esc_html__( 'White', 'back_to_front_starter' )          => '#fff',
+		esc_html__( 'Whitesmoke', 'back_to_front_starter' )     => '#f1f1f1',
 	);
 }
 
@@ -435,7 +435,7 @@ function _s_get_theme_colors() {
  * @author jomurgel <jo@webdevstudios.com>
  * @return void
  */
-function _s_display_hero_heading( $block_title ) {
+function back_to_front_starter_display_hero_heading( $block_title ) {
 
 	// Bail if our title is empty.
 	if ( empty( $block_title ) ) {
@@ -456,8 +456,8 @@ function _s_display_hero_heading( $block_title ) {
  * @author jomurgel <jo@webdevstudios.com>
  * @since NEXT
  */
-function _s_display_link( $args = array() ) {
-	echo _s_get_link( $args ); // WPCS: XSS Ok.
+function back_to_front_starter_display_link( $args = array() ) {
+	echo back_to_front_starter_get_link( $args ); // WPCS: XSS Ok.
 }
 
 /**
@@ -469,7 +469,7 @@ function _s_display_link( $args = array() ) {
  *
  * @return string button markup.
  */
-function _s_get_link( $args = array() ) {
+function back_to_front_starter_get_link( $args = array() ) {
 
 	// Defaults.
 	$defaults = array(
@@ -499,13 +499,13 @@ function _s_get_link( $args = array() ) {
 	$classes .= ' ' . $args['class'];
 
 	// Get title else default to "Read More".
-	$title = _s_has_array_key( 'title', $button_array ) ? $button_array['title'] : esc_html__( 'Read More', '_s' );
+	$title = back_to_front_starter_has_array_key( 'title', $button_array ) ? $button_array['title'] : esc_html__( 'Read More', 'back_to_front_starter' );
 
 	// Get url.
-	$url = _s_has_array_key( 'url', $button_array ) ? $button_array['url'] : '';
+	$url = back_to_front_starter_has_array_key( 'url', $button_array ) ? $button_array['url'] : '';
 
 	// Get target, else default internal.
-	$target = _s_has_array_key( 'target', $button_array ) ? $button_array['target'] : '_self';
+	$target = back_to_front_starter_has_array_key( 'target', $button_array ) ? $button_array['target'] : '_self';
 	?>
 
 	<a href="<?php echo esc_url( $url ); ?>" class="<?php echo esc_attr( $classes ); ?>" target="<?php echo esc_attr( $target ); ?>"><?php echo esc_html( $title ); ?></a>

@@ -6,7 +6,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 // Omit class if password protected and content is hidden.
@@ -23,7 +23,7 @@ get_header(); ?>
 			if ( post_password_required() ) :
 				get_template_part( 'template-parts/content', 'password-protected' );
 			else :
-				_s_display_content_blocks();
+				back_to_front_starter_display_content_blocks();
 			endif;
 		?>
 

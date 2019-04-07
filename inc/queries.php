@@ -4,7 +4,7 @@
  *
  * This file is used to house "getter" function, that fetch data from the database.
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 /**
@@ -17,7 +17,7 @@
  * @return array $args The query arguments.
  * @author Eric Fuller, Jeffrey de Wit
  */
-function _s_get_recent_posts_query_arguments( $categories, $tags ) {
+function back_to_front_starter_get_recent_posts_query_arguments( $categories, $tags ) {
 
 	$args = array();
 
@@ -64,7 +64,7 @@ function _s_get_recent_posts_query_arguments( $categories, $tags ) {
  * @return object        The related posts object.
  * @author Greg Rickaby, Eric Fuller, Jeffrey de Wit
  */
-function _s_get_recent_posts( $args = array() ) {
+function back_to_front_starter_get_recent_posts( $args = array() ) {
 
 	// Setup default WP_Query args.
 	$defaults = array(

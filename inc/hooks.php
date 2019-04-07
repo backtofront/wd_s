@@ -4,7 +4,7 @@
  *
  * A place to put hooks and filters that aren't necessarily template tags.
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 /**
@@ -14,7 +14,7 @@
  * @author WDS
  * @return array
  */
-function _s_body_classes( $classes ) {
+function back_to_front_starter_body_classes( $classes ) {
 
 	// @codingStandardsIgnoreStart
 	// Allows for incorrect snake case like is_IE to be used without throwing errors.
@@ -71,23 +71,23 @@ function _s_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', '_s_body_classes' );
+add_filter( 'body_class', 'back_to_front_starter_body_classes' );
 
 /**
- * Flush out the transients used in _s_categorized_blog.
+ * Flush out the transients used in back_to_front_starter_categorized_blog.
  *
  * @author WDS
  * @return string
  */
-function _s_category_transient_flusher() {
+function back_to_front_starter_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return false;
 	}
 	// Like, beat it. Dig?
-	delete_transient( '_s_categories' );
+	delete_transient( 'back_to_front_starter_categories' );
 }
-add_action( 'delete_category', '_s_category_transient_flusher' );
-add_action( 'save_post', '_s_category_transient_flusher' );
+add_action( 'delete_category', 'back_to_front_starter_category_transient_flusher' );
+add_action( 'save_post', 'back_to_front_starter_category_transient_flusher' );
 
 /**
  * Customize "Read More" string on <!-- more --> with the_content();
@@ -95,10 +95,10 @@ add_action( 'save_post', '_s_category_transient_flusher' );
  * @author WDS
  * @return string
  */
-function _s_content_more_link() {
-	return ' <a class="more-link" href="' . get_permalink() . '">' . esc_html__( 'Read More', '_s' ) . '...</a>';
+function back_to_front_starter_content_more_link() {
+	return ' <a class="more-link" href="' . get_permalink() . '">' . esc_html__( 'Read More', 'back_to_front_starter' ) . '...</a>';
 }
-add_filter( 'the_content_more_link', '_s_content_more_link' );
+add_filter( 'the_content_more_link', 'back_to_front_starter_content_more_link' );
 
 /**
  * Customize the [...] on the_excerpt();
@@ -107,10 +107,10 @@ add_filter( 'the_content_more_link', '_s_content_more_link' );
  * @param string $more The current $more string.
  * @return string
  */
-function _s_excerpt_more( $more ) {
-	return sprintf( ' <a class="more-link" href="%1$s">%2$s</a>', get_permalink( get_the_ID() ), esc_html__( 'Read more...', '_s' ) );
+function back_to_front_starter_excerpt_more( $more ) {
+	return sprintf( ' <a class="more-link" href="%1$s">%2$s</a>', get_permalink( get_the_ID() ), esc_html__( 'Read more...', 'back_to_front_starter' ) );
 }
-add_filter( 'excerpt_more', '_s_excerpt_more' );
+add_filter( 'excerpt_more', 'back_to_front_starter_excerpt_more' );
 
 /**
  * Enable custom mime types.
@@ -119,12 +119,12 @@ add_filter( 'excerpt_more', '_s_excerpt_more' );
  * @param array $mimes Current allowed mime types.
  * @return array
  */
-function _s_custom_mime_types( $mimes ) {
+function back_to_front_starter_custom_mime_types( $mimes ) {
 	$mimes['svg']  = 'image/svg+xml';
 	$mimes['svgz'] = 'image/svg+xml';
 	return $mimes;
 }
-add_filter( 'upload_mimes', '_s_custom_mime_types' );
+add_filter( 'upload_mimes', 'back_to_front_starter_custom_mime_types' );
 
 /**
  * Disable the "Cancel reply" link. It doesn't seem to work anyway, and it only makes the "Leave Reply" heading confusing.
@@ -133,7 +133,7 @@ add_filter( 'cancel_comment_reply_link', '__return_false' );
 
 // Create shortcode for SVG.
 // Usage [svg icon="facebook-square" title="facebook" desc="like us on facebook" fill="#000000" height="20px" width="20px"].
-add_shortcode( 'svg', '_s_display_svg' );
+add_shortcode( 'svg', 'back_to_front_starter_display_svg' );
 
 /**
  * Display the customizer header scripts.
@@ -141,10 +141,10 @@ add_shortcode( 'svg', '_s_display_svg' );
  * @author Greg Rickaby
  * @return string
  */
-function _s_display_customizer_header_scripts() {
+function back_to_front_starter_display_customizer_header_scripts() {
 
 	// Check for header scripts.
-	$scripts = get_theme_mod( '_s_header_scripts' );
+	$scripts = get_theme_mod( 'back_to_front_starter_header_scripts' );
 
 	// None? Bail...
 	if ( ! $scripts ) {
@@ -152,9 +152,9 @@ function _s_display_customizer_header_scripts() {
 	}
 
 	// Otherwise, echo the scripts!
-	echo _s_get_the_content( $scripts ); // WPCS XSS OK.
+	echo back_to_front_starter_get_the_content( $scripts ); // WPCS XSS OK.
 }
-add_action( 'wp_head', '_s_display_customizer_header_scripts', 999 );
+add_action( 'wp_head', 'back_to_front_starter_display_customizer_header_scripts', 999 );
 
 /**
  * Display the customizer footer scripts.
@@ -162,10 +162,10 @@ add_action( 'wp_head', '_s_display_customizer_header_scripts', 999 );
  * @author Greg Rickaby
  * @return string
  */
-function _s_display_customizer_footer_scripts() {
+function back_to_front_starter_display_customizer_footer_scripts() {
 
 	// Check for footer scripts.
-	$scripts = get_theme_mod( '_s_footer_scripts' );
+	$scripts = get_theme_mod( 'back_to_front_starter_footer_scripts' );
 
 	// None? Bail...
 	if ( ! $scripts ) {
@@ -173,9 +173,9 @@ function _s_display_customizer_footer_scripts() {
 	}
 
 	// Otherwise, echo the scripts!
-	echo _s_get_the_content( $scripts ); // WPCS XSS OK.
+	echo back_to_front_starter_get_the_content( $scripts ); // WPCS XSS OK.
 }
-add_action( 'wp_footer', '_s_display_customizer_footer_scripts', 999 );
+add_action( 'wp_footer', 'back_to_front_starter_display_customizer_footer_scripts', 999 );
 
 /**
  * Adds OG tags to the head for better social sharing.
@@ -183,7 +183,7 @@ add_action( 'wp_footer', '_s_display_customizer_footer_scripts', 999 );
  * @return string Just an empty string if Yoast is found.
  * @author Corey Collins
  */
-function _s_add_og_tags() {
+function back_to_front_starter_add_og_tags() {
 
 	// Bail if Yoast is installed, since it will handle things.
 	if ( class_exists( 'WPSEO_Options' ) ) {
@@ -208,7 +208,7 @@ function _s_add_og_tags() {
 	$default_url = get_permalink();
 
 	// Set our base description.
-	$default_base_description = ( get_bloginfo( 'description' ) ) ? get_bloginfo( 'description' ) : esc_html__( 'Visit our website to learn more.', '_s' );
+	$default_base_description = ( get_bloginfo( 'description' ) ) ? get_bloginfo( 'description' ) : esc_html__( 'Visit our website to learn more.', 'back_to_front_starter' );
 
 	// Set the card type.
 	$default_type = 'article';
@@ -248,13 +248,13 @@ function _s_add_og_tags() {
 
 		$term_name      = single_term_title( '', false );
 		$card_title     = $term_name . ' - ' . $default_title;
-		$specify        = ( is_category() ) ? esc_html__( 'categorized in', '_s' ) : esc_html__( 'tagged with', '_s' );
+		$specify        = ( is_category() ) ? esc_html__( 'categorized in', 'back_to_front_starter' ) : esc_html__( 'tagged with', 'back_to_front_starter' );
 		$queried_object = get_queried_object();
 		$card_url       = get_term_link( $queried_object );
 		$card_type      = 'website';
 
 		// Translators: get the term name.
-		$card_long_description = $card_description = sprintf( esc_html__( 'Posts %1$s %2$s.', '_s' ), $specify, $term_name );
+		$card_long_description = $card_description = sprintf( esc_html__( 'Posts %1$s %2$s.', 'back_to_front_starter' ), $specify, $term_name );
 	}
 
 	// Search results.
@@ -266,7 +266,7 @@ function _s_add_og_tags() {
 		$card_type   = 'website';
 
 		// Translators: get the search term.
-		$card_long_description = $card_description = sprintf( esc_html__( 'Search results for %s.', '_s' ), $search_term );
+		$card_long_description = $card_description = sprintf( esc_html__( 'Search results for %s.', 'back_to_front_starter' ), $search_term );
 	}
 
 	if ( is_home() ) {
@@ -313,7 +313,7 @@ function _s_add_og_tags() {
 	<meta name="description" content="<?php echo esc_attr( $card_long_description ); ?>" />
 	<?php
 }
-add_action( 'wp_head', '_s_add_og_tags' );
+add_action( 'wp_head', 'back_to_front_starter_add_og_tags' );
 
 /**
  * Removes or Adjusts the prefix on category archive page titles.
@@ -322,7 +322,7 @@ add_action( 'wp_head', '_s_add_og_tags' );
  * @return string The updated $block_title.
  * @author Corey Collins
  */
-function _s_remove_archive_title_prefix( $block_title ) {
+function back_to_front_starter_remove_archive_title_prefix( $block_title ) {
 
 	// Get the single category title with no prefix.
 	$single_cat_title = single_term_title( '', false );
@@ -333,4 +333,4 @@ function _s_remove_archive_title_prefix( $block_title ) {
 
 	return $block_title;
 }
-add_filter( 'get_the_archive_title', '_s_remove_archive_title_prefix' );
+add_filter( 'get_the_archive_title', 'back_to_front_starter_remove_archive_title_prefix' );

@@ -2,7 +2,7 @@
 /**
  * The template used for displaying related posts.
  *
- * @package _s
+ * @package Back to Front Starter
  */
 
 // Set up fields.
@@ -13,7 +13,7 @@ $related_posts = get_sub_field( 'related_posts' );
 if ( $related_posts ) :
 
 	// Start a <container> with possible block options.
-	_s_display_block_options(
+	back_to_front_starter_display_block_options(
 		array(
 			'container' => 'section', // Any HTML5 container: section, div, etc...
 			'class'     => 'content-block related-posts-block', // Container class.
@@ -27,7 +27,7 @@ if ( $related_posts ) :
 			<?php endif; ?>
 		</div>
 
-		<div class="container display-flex<?php echo esc_attr( _s_get_animation_class() ); ?>">
+		<div class="container display-flex<?php echo esc_attr( back_to_front_starter_get_animation_class() ); ?>">
 
 			<?php
 			// Loop through recent posts.
@@ -37,11 +37,11 @@ if ( $related_posts ) :
 				setup_postdata( $post );
 
 						// Display a card.
-				_s_display_card(
+				back_to_front_starter_display_card(
 					array(
 						'title' => get_the_title(),
-						'image' => _s_get_post_image_url( 'medium' ),
-						'text'  => _s_get_the_excerpt(
+						'image' => back_to_front_starter_get_post_image_url( 'medium' ),
+						'text'  => back_to_front_starter_get_the_excerpt(
 							array(
 								'length' => 20,
 								'more'   => '...',
